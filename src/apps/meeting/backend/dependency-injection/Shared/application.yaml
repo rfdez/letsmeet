@@ -1,0 +1,5 @@
+services:
+
+  Shared.Logger:
+    class: ../../../../../Contexts/Shared/infrastructure/Logger/WinstonLogger
+    arguments: [ ]
