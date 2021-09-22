@@ -1,0 +1,20 @@
+version: '3.9'
+
+x-app-service: &default-app
+  build: .
+  image: rfdez/letsmeet:dev
+  command: ''
+  volumes:
+    - .:/code:delegated
+    - node_modules:/code/node_modules:delegated
+
+services:
+  app:
+    <<: *default-app
+
+  meeting-backend:
+    <<: *default-app
+    command: bash -c "npm run build && npm run start:meeting:backend"
+
+volumes:
+  node_modules:

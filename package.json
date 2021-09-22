@@ -1,0 +1,55 @@
+{
+  "name": "letsmeet",
+  "version": "1.0.0",
+  "description": "Typescript DDD test for educational purpose only.",
+  "repository": {
+    "url": ""
+  },
+  "scripts": {
+    "dev:meeting:backend": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules  ./src/apps/meeting/backend/start.ts",
+    "start:meeting:backend": "NODE_ENV=production node dist/src/apps/meeting/backend/start",
+    "lint": "npm run eslint:fix",
+    "eslint": "eslint 'src/**/*.ts'",
+    "eslint:fix": "eslint --fix 'src/**/*.ts'",
+    "build": "npm run build:clean && npm run build:tsc",
+    "build:tsc": "tsc -p tsconfig.prod.json",
+    "build:clean": "rm -r dist; exit 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=14.17.6",
+    "npm": ">=6.14.15"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^16.9.6",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "husky": "7.0.2",
+    "lint-staged": "11.1.2",
+    "prettier": "2.4.1",
+    "ts-node": "^10.2.1",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "{src,tests}/**/*.ts": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
