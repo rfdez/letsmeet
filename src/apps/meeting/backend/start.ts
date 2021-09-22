@@ -1,17 +1,13 @@
-interface User {
-  name: string;
-  id: number;
+import MeetingBackendApp from './MeetingBackendApp';
+
+try {
+  new MeetingBackendApp().start();
+} catch (e) {
+  console.error(e);
+  process.exit(1);
 }
 
-class UserAccount {
-  name: string;
-  id: number;
-
-  constructor(name: string, id: number) {
-    this.name = name;
-    this.id = id;
-  }
-}
-
-const user: User = new UserAccount('Prueba', 1);
-console.log(user.name, user.id);
+process.on('uncaughtException', error => {
+  console.error('uncaughtException', error);
+  process.exit(1);
+});
