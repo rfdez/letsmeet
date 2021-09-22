@@ -30,6 +30,10 @@ build:
 lint: build
 	docker-compose run --rm $(SERVICE_NAME) bash -c 'npm run lint'
 
+# Run tests
+test: build
+	docker-compose run --rm $(SERVICE_NAME) bash -c 'npm run build && npm run test'
+
 # Start meeting backend app
 .PHONY: start-meeting-backend
 start-meeting-backend: build
