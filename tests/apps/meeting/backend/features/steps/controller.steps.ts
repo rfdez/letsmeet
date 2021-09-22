@@ -3,7 +3,7 @@ import { AfterAll, BeforeAll, Given, Then } from '@cucumber/cucumber';
 import MeetingBackendApp from '../../../../../../src/apps/meeting/backend/MeetingBackendApp';
 
 let _request: request.Test;
-let _response: request.Response;
+// let _response: request.Response;
 let application: MeetingBackendApp;
 
 Given('I send a GET request to {string}', (route: string) => {
@@ -11,8 +11,8 @@ Given('I send a GET request to {string}', (route: string) => {
 });
 
 Then('the response status code should be {int}', async (status: number) => {
-  _response = await _request.expect(status);
-  console.log(_response.body);
+  // _response = await _request.expect(status);
+  await _request.expect(status);
 });
 
 BeforeAll(async () => {

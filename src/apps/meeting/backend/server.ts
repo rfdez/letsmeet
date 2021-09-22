@@ -25,7 +25,6 @@ export default class Server {
   async listen(): Promise<void> {
     return new Promise(resolve => {
       this.httpServer = this.express.listen(this.port, () => {
-        console.log('Server running');
         resolve();
       });
     });

@@ -11,8 +11,9 @@
     "lint": "npm run eslint:fix",
     "eslint": "eslint 'src/**/*.ts'",
     "eslint:fix": "eslint --fix 'src/**/*.ts'",
-    "build": "npm run build:clean && npm run build:tsc",
+    "build": "npm run build:clean && npm run build:tsc && npm run build:di",
     "build:tsc": "tsc -p tsconfig.prod.json",
+    "build:di": "copy 'src/**/*.yaml' dist/src",
     "build:clean": "rm -r dist; exit 0",
     "test": "npm run test:features",
     "test:features": "npm run test:meeting:backend:features",
@@ -29,7 +30,8 @@
     "express": "^4.17.1",
     "express-promise-router": "^4.1.0",
     "glob": "^7.1.7",
-    "http-status": "^1.5.0"
+    "http-status": "^1.5.0",
+    "node-dependency-injection": "^2.7.1"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^7.3.1",
@@ -39,6 +41,7 @@
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
+    "copy": "^0.3.2",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-config-standard": "^16.0.3",

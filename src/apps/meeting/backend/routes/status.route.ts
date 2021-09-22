@@ -1,8 +1,8 @@
 import { Request, Response, Router } from 'express';
 import StatusGetController from '../controllers/StatusGetController';
+import container from '../dependency-injection';
 
 export const register = (router: Router) => {
-  // TODO: Get controller instances by container (Dependency injection)
-  const controller: StatusGetController = new StatusGetController();
+  const controller: StatusGetController = container.get('Apps.meeting.controllers.StatusGetController');
   router.get('/status', (req: Request, res: Response) => controller.run(req, res));
 };
