@@ -6,7 +6,6 @@ x-app-service: &default-app
   command: ''
   volumes:
     - .:/code:delegated
-    - node_modules:/code/node_modules:delegated
 
 services:
   app:
@@ -14,9 +13,6 @@ services:
 
   meeting-backend:
     <<: *default-app
-    command: bash -c "npm run build && npm run start:meeting:backend"
+    command: bash -c "npm run start:meeting:backend"
     ports:
       - '3000:3000'
-
-volumes:
-  node_modules:

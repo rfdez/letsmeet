@@ -9,8 +9,8 @@ MEETING_APP_NAME := meeting
 DOCKER := $(shell command -v docker)
 DOCKER_COMPOSE := $(shell command -v docker-compose)
 
-.PHONY: deps
-deps:
+.PHONY: default
+default:
 ifndef DOCKER
 	@echo "Docker is not available. Please install docker"
 	@exit 1
@@ -20,26 +20,49 @@ ifndef DOCKER_COMPOSE
 	@exit 1
 endif
 
-# Build image
-.PHONY: build
-build:
-	docker build -t $(IMAGE_NAME):dev .
+.PHONY: deps
+deps: npm-install
+
+# NPM
+.PHONY: npm-install
+npm-install: CMD=install
+
+.PHONY: npm-update
+npm-update: CMD=update
+
+.PHONY: npm-dep
+npm-dep: CMD=install $(package)
+
+.PHONY: npm-dev
+npm-dev: CMD=install -D $(package)
+
+.PHONY: npm
+npm npm-install npm-update npm-dep npm-dev: build-image
+	docker-compose run --rm $(SERVICE_NAME) bash -c 'npm $(CMD)'
 
 # Lint project
 .PHONY: lint
-lint: build
+lint: build-image
 	docker-compose run --rm $(SERVICE_NAME) bash -c 'npm run lint'
+
+.PHONY: build
+build: build-image
+	docker-compose run --rm $(SERVICE_NAME) bash -c 'npm run build'
 
 # Run tests
 test: build
-	docker-compose run --rm $(SERVICE_NAME) bash -c 'npm run build && npm run test'
+	docker-compose run --rm $(SERVICE_NAME) bash -c 'npm run test'
 
 # Start meeting backend app
 .PHONY: start-meeting-backend
 start-meeting-backend: build
 	docker-compose up $(MEETING_APP_NAME)-backend && docker-compose down
 
-# Clean containers
+# Docker
+.PHONY: build-image
+build-image:
+	docker build -t $(IMAGE_NAME):dev .
+
 .PHONY: clean
 clean:
 	docker-compose down --rmi local -v --remove-orphans

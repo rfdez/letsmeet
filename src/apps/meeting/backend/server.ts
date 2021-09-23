@@ -1,7 +1,7 @@
-import express, {Request, Response} from 'express';
+import express, { Request, Response } from 'express';
 import * as http from 'http';
 import Router from 'express-promise-router';
-import {registerRoutes} from './routes';
+import { registerRoutes } from './routes';
 import httpStatus from 'http-status';
 import Logger from '../../../Contexts/Shared/domain/Logger';
 import container from './dependency-injection';

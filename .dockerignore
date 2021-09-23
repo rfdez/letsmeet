@@ -3,8 +3,8 @@
 .gitignore
 docker-compose.yml
 Dockerfile
-node_modules
 dist
 logs
 .tmp
+node_modules
 npm-debug.log

@@ -30,7 +30,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-promise-router": "^4.1.0",
-    "glob": "^7.1.7",
+    "glob": "^7.2.0",
     "http-status": "^1.5.0",
     "node-dependency-injection": "^2.7.1",
     "winston": "^3.3.3"
