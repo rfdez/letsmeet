@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import * as http from 'http';
+import http from 'http';
 import Router from 'express-promise-router';
 import { registerRoutes } from './routes';
 import httpStatus from 'http-status';

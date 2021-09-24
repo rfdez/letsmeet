@@ -1,5 +1,5 @@
 import Server from './server';
-import * as http from 'http';
+import http from 'http';
 
 export default class MeetingBackendApp {
   server?: Server;
