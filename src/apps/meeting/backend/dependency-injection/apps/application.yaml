@@ -1,5 +1,0 @@
-services:
-  
-  Apps.meeting.controllers.StatusGetController:
-    class: ../../controllers/StatusGetController
-    arguments: [ ]

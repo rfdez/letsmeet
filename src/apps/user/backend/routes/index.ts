@@ -3,8 +3,11 @@ import glob from 'glob';
 import path from 'path';
 
 export const registerRoutes = (router: Router) => {
-  const routes = glob.sync(path.join(__dirname, '/**/*.route.*'));
-  routes.map(route => register(route, router));
+  const routeFilePath = path.join(__dirname, '/**/*.route.*');
+  const routes = glob.sync(routeFilePath);
+  routes.map(route => {
+    return register(route, router);
+  });
 };
 
 const register = (routePath: string, router: Router) => {

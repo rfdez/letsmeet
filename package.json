@@ -6,8 +6,8 @@
     "url": ""
   },
   "scripts": {
-    "dev:meeting:backend": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules  ./src/apps/meeting/backend/start.ts",
-    "start:meeting:backend": "NODE_ENV=production node dist/src/apps/meeting/backend/start",
+    "dev:user:backend": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules  ./src/apps/user/backend/start.ts",
+    "start:user:backend": "NODE_ENV=production node dist/src/apps/user/backend/start",
     "lint": "npm run eslint:fix",
     "eslint": "eslint 'src/**/*.ts'",
     "eslint:fix": "eslint --fix 'src/**/*.ts'",
@@ -16,9 +16,9 @@
     "build:di": "copy 'src/**/*.yaml' dist/src",
     "build:clean": "rm -r dist; exit 0",
     "test": "npm run test:unit && npm run test:features",
-    "test:unit": "NODE_ENV=test jest",
-    "test:features": "npm run test:meeting:backend:features",
-    "test:meeting:backend:features": "NODE_ENV=test cucumber-js -p meeting_backend"
+    "test:unit": "NODE_ENV=test jest --passWithNoTests",
+    "test:features": "npm run test:user:backend:features",
+    "test:user:backend:features": "NODE_ENV=test cucumber-js -p user_backend"
   },
   "keywords": [],
   "author": "",

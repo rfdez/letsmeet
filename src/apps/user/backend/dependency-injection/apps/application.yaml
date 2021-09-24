@@ -1,0 +1,9 @@
+services:
+
+  Apps.user.controllers.StatusGetController:
+    class: ../../controllers/StatusGetController
+    arguments: [ ]
+
+  Apps.user.controllers.ProfilePutController:
+    class: ../../controllers/ProfilePutController
+    arguments: [ ]

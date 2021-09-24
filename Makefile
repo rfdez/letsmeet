@@ -3,7 +3,7 @@ SHELL := $(shell which bash)
 
 IMAGE_NAME := rfdez/letsmeet
 SERVICE_NAME := app
-MEETING_APP_NAME := meeting
+USER_APP_NAME := user
 
 # Test if the dependencies we need to run this Makefile are installed
 DOCKER := $(shell command -v docker)
@@ -53,10 +53,10 @@ build: build-image
 test: build
 	docker-compose run --rm $(SERVICE_NAME) bash -c 'npm run test'
 
-# Start meeting backend app
-.PHONY: start-meeting-backend
-start-meeting-backend: build
-	docker-compose up $(MEETING_APP_NAME)-backend && docker-compose down
+# Start user backend app
+.PHONY: start-user-backend
+start-user-backend: build
+	docker-compose up $(USER_APP_NAME)-backend && docker-compose down
 
 # Docker
 .PHONY: build-image

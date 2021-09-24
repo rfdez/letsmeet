@@ -1,7 +1,7 @@
 import Server from './server';
 import http from 'http';
 
-export default class MeetingBackendApp {
+export default class UserBackendApp {
   server?: Server;
 
   async start(): Promise<void> {

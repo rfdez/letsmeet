@@ -21,18 +21,18 @@ export default class Server {
 
     registerRoutes(router);
 
-    router.use((err: Error, req: Request, res: Response, next: Function) => {
+    router.use((err: Error, req: Request, res: Response) => {
       this.logger.error(err);
-      res.status(httpStatus.INTERNAL_SERVER_ERROR).send(err.message);
+      res.status(httpStatus.INTERNAL_SERVER_ERROR);
+      res.send(err.message);
     });
   }
 
   async listen(): Promise<void> {
     return new Promise(resolve => {
       this.httpServer = this.express.listen(this.port, () => {
-        this.logger.info(
-          `  Meeting Backend App is running at http://localhost:${this.port} in ${this.express.get('env')} mode`
-        );
+        const env = this.express.get('env');
+        this.logger.info(`  Meeting Backend App is running at http://localhost:${this.port} in ${env} mode`);
         this.logger.info('  Press CTRL-C to stop\n');
         resolve();
       });

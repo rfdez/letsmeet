@@ -14,15 +14,15 @@ enum Levels {
 export default class WinstonLogger implements Logger {
   private logger: WinstonLoggerType;
 
+  private readonly prettyPrint = winston.format.prettyPrint();
+  private readonly errors = winston.format.errors({ stack: true });
+  private readonly splat = winston.format.splat();
+  private readonly colorize = winston.format.colorize();
+  private readonly simple = winston.format.simple();
+
   constructor() {
     this.logger = winston.createLogger({
-      format: winston.format.combine(
-        winston.format.prettyPrint(),
-        winston.format.errors({ stack: true }),
-        winston.format.splat(),
-        winston.format.colorize(),
-        winston.format.simple()
-      ),
+      format: winston.format.combine(this.prettyPrint, this.errors, this.splat, this.colorize, this.simple),
       transports: [
         new winston.transports.Console(),
         new winston.transports.File({ filename: `logs/${Levels.DEBUG}.log`, level: Levels.DEBUG }),

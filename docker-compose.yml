@@ -11,8 +11,8 @@ services:
   app:
     <<: *default-app
 
-  meeting-backend:
+  user-backend:
     <<: *default-app
-    command: bash -c "npm run start:meeting:backend"
+    command: bash -c "npm run start:user:backend"
     ports:
       - '3000:3000'
