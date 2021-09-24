@@ -1,13 +1,9 @@
-import winston, {Logger as WinstonLoggerType} from 'winston';
+import winston, { Logger as WinstonLoggerType } from 'winston';
 import Logger from '../../domain/Logger';
 
-// eslint-disable-next-line no-unused-vars
 enum Levels {
-  // eslint-disable-next-line no-unused-vars
   DEBUG = 'debug',
-  // eslint-disable-next-line no-unused-vars
   ERROR = 'error',
-  // eslint-disable-next-line no-unused-vars
   INFO = 'info'
 }
 

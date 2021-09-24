@@ -6,4 +6,4 @@ services:
 
   Apps.user.controllers.ProfilePutController:
     class: ../../controllers/ProfilePutController
-    arguments: [ ]
+    arguments: [ "@Shared.CommandBus" ]

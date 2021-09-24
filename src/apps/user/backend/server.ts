@@ -5,6 +5,7 @@ import { registerRoutes } from './routes';
 import httpStatus from 'http-status';
 import Logger from '../../../Contexts/Shared/domain/Logger';
 import container from './dependency-injection';
+import bodyParser from 'body-parser';
 
 export default class Server {
   private express: express.Express;
@@ -16,6 +17,8 @@ export default class Server {
     this.port = port;
     this.logger = container.get('Shared.Logger');
     this.express = express();
+    this.express.use(bodyParser.json());
+    this.express.use(bodyParser.urlencoded({ extended: true }));
     const router = Router();
     this.express.use(router);
 

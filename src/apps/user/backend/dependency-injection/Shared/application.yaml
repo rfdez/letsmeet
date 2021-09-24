@@ -3,3 +3,17 @@ services:
   Shared.Logger:
     class: ../../../../../Contexts/Shared/infrastructure/Logger/WinstonLogger
     arguments: [ ]
+
+  Shared.EventBus:
+    class: ../../../../../Contexts/Shared/infrastructure/Bus/Event/InMemory/InMemorySyncEventBus
+    arguments: [ ]
+    #    class: ../../../../../Contexts/Shared/infrastructure/Bus/Event/RabbitMq/RabbitMqEventBus
+    #    arguments: [ '@Shared.RabbitMqConfig', '@Shared.Logger' ]
+
+  Shared.CommandHandlersInformation:
+    class: ../../../../../Contexts/Shared/infrastructure/Bus/Command/CommandHandlersInformation
+    arguments: [ '!tagged commandHandler' ]
+
+  Shared.CommandBus:
+    class: ../../../../../Contexts/Shared/infrastructure/Bus/Command/InMemoryCommandBus
+    arguments: [ '@Shared.CommandHandlersInformation' ]
