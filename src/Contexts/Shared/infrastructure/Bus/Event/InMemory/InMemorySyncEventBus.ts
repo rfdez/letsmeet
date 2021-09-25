@@ -1,6 +1,6 @@
-import { EventBus } from '../../../../domain/Bus/Event/EventBus';
 import { DomainEvent } from '../../../../domain/Bus/Event/DomainEvent';
 import { DomainEventSubscriber } from '../../../../domain/Bus/Event/DomainEventSubscriber';
+import { EventBus } from '../../../../domain/Bus/Event/EventBus';
 import DomainEventMapping from '../DomainEventMapping';
 
 type Subscription = {
@@ -19,11 +19,12 @@ export default class InMemorySyncEventBus implements EventBus {
 
   async publish(events: Array<DomainEvent>): Promise<void> {
     const executions: any = [];
-    // events.forEach(event => {
-    events.map(event => {
+    // events.map(event => {
+    events.forEach(event => {
       const subscribers = this.subscriptions.get(event.eventName);
       if (subscribers) {
-        return subscribers.map(subscriber => executions.push(subscriber.boundedCallback(event)));
+        subscribers.forEach(subscriber => executions.push(subscriber.boundedCallback(event)));
+        // return subscribers.map(subscriber => executions.push(subscriber.boundedCallback(event)));
       }
     });
 
@@ -36,11 +37,13 @@ export default class InMemorySyncEventBus implements EventBus {
     );
   }
 
-  setDomainEventMapping(domainEventMapping: DomainEventMapping): void {}
+  setDomainEventMapping(domainEventMapping: DomainEventMapping): void {
+    console.log(domainEventMapping.constructor.name);
+  }
 
   private subscribe(topic: string, subscriber: DomainEventSubscriber<DomainEvent>): void {
     const currentSubscriptions = this.subscriptions.get(topic);
-    const subscription = { boundedCallback: subscriber.on.bind(subscriber), originalCallback: subscriber.on };
+    const subscription = { boundedCallback: subscriber.onEvent.bind(subscriber), originalCallback: subscriber.onEvent };
     if (currentSubscriptions) {
       currentSubscriptions.push(subscription);
     } else {

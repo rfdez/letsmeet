@@ -7,6 +7,7 @@ x-app-service: &default-app
     - MONGO_URL=mongodb://mongodb:27017/dev
   depends_on:
     - mongodb
+    - rabbitmq
   volumes:
     - .:/code:delegated
 
@@ -26,6 +27,12 @@ services:
       - mongodb:/data/db:delegated
     ports:
       - '27017:27017'
+
+  rabbitmq:
+    image: rabbitmq:3.9.7-management
+    ports:
+      - '5672:5672'
+      - '15672:15672'
 
 volumes:
   mongodb:

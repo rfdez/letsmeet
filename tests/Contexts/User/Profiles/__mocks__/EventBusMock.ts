@@ -12,7 +12,11 @@ export default class EventBusMock implements EventBus {
 
   async start(): Promise<void> {}
 
-  addSubscribers(subscribers: Array<DomainEventSubscriber<DomainEvent>>) {}
+  addSubscribers(subscribers: Array<DomainEventSubscriber<DomainEvent>>) {
+    console.log(subscribers.constructor.name);
+  }
 
-  setDomainEventMapping(domainEventMapping: DomainEventMapping) {}
+  setDomainEventMapping(domainEventMapping: DomainEventMapping) {
+    console.log(domainEventMapping.constructor.name);
+  }
 }

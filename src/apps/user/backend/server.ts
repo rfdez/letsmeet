@@ -1,11 +1,11 @@
+import bodyParser from 'body-parser';
 import express, { Request, Response } from 'express';
-import http from 'http';
 import Router from 'express-promise-router';
-import { registerRoutes } from './routes';
+import http from 'http';
 import httpStatus from 'http-status';
 import Logger from '../../../Contexts/Shared/domain/Logger';
 import container from './dependency-injection';
-import bodyParser from 'body-parser';
+import { registerRoutes } from './routes';
 
 export default class Server {
   private express: express.Express;

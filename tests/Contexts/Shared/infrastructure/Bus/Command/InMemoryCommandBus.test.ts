@@ -1,8 +1,8 @@
 import { Command } from '../../../../../../src/Contexts/Shared/domain/Bus/Command/Command';
 import { CommandHandler } from '../../../../../../src/Contexts/Shared/domain/Bus/Command/CommandHandler';
+import CommandNotRegisteredError from '../../../../../../src/Contexts/Shared/domain/Bus/Command/CommandNotRegisteredError';
 import CommandHandlersInformation from '../../../../../../src/Contexts/Shared/infrastructure/Bus/Command/CommandHandlersInformation';
 import InMemoryCommandBus from '../../../../../../src/Contexts/Shared/infrastructure/Bus/Command/InMemoryCommandBus';
-import CommandNotRegisteredError from '../../../../../../src/Contexts/Shared/domain/Bus/Command/CommandNotRegisteredError';
 
 class UnhandledCommand extends Command {
   static readonly COMMAND_NAME = 'unhandled.command';
@@ -17,7 +17,9 @@ class MyCommandHandled implements CommandHandler<HandledCommand> {
     return HandledCommand;
   }
 
-  async handle(command: HandledCommand): Promise<void> {}
+  async handle(command: HandledCommand): Promise<void> {
+    console.log(command.constructor.name);
+  }
 }
 
 describe('InMemoryCommandBus', () => {
@@ -35,7 +37,7 @@ describe('InMemoryCommandBus', () => {
     }
 
     expect(exception).toBeInstanceOf(CommandNotRegisteredError);
-    expect(exception.message).toBe(`The command <UnhandledCommand> hasn't a command handler associated`);
+    expect(exception!.message).toBe(`The command <UnhandledCommand> hasn't a command handler associated`);
   });
 
   it('accepts a command with handler', async () => {
