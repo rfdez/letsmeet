@@ -19,6 +19,7 @@ export default class InMemorySyncEventBus implements EventBus {
 
   async publish(events: Array<DomainEvent>): Promise<void> {
     const executions: any = [];
+    // events.forEach(event => {
     events.map(event => {
       const subscribers = this.subscriptions.get(event.eventName);
       if (subscribers) {

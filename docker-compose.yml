@@ -2,8 +2,11 @@ version: '3.9'
 
 x-app-service: &default-app
   build: .
-  image: rfdez/letsmeet:dev
   command: ''
+  environment:
+    - MONGO_URL=mongodb://mongodb:27017/dev
+  depends_on:
+    - mongodb
   volumes:
     - .:/code:delegated
 
@@ -16,3 +19,13 @@ services:
     command: bash -c "npm run start:user:backend"
     ports:
       - '3000:3000'
+
+  mongodb:
+    image: mongo:5.0.3
+    volumes:
+      - mongodb:/data/db:delegated
+    ports:
+      - '27017:27017'
+
+volumes:
+  mongodb:

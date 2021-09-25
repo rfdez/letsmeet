@@ -1,3 +1,4 @@
+/* jshint node: true */
 module.exports = {
   preset: 'ts-jest',
   globals: {

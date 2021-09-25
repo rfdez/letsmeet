@@ -2,6 +2,8 @@ import request from 'supertest';
 import { AfterAll, BeforeAll, Given, Then } from '@cucumber/cucumber';
 import UserBackendApp from '../../../../../../src/apps/user/backend/UserBackendApp';
 import assert from 'assert';
+import { EnvironmentArranger } from '../../../../../Contexts/Shared/infrastructure/arranger/EnvironmentArranger';
+import container from '../../../../../../src/apps/user/backend/dependency-injection';
 
 let _request: request.Test;
 let _response: request.Response;
@@ -24,12 +26,15 @@ Then('the response should be empty', () => {
 });
 
 BeforeAll(async () => {
-  // TODO: In case of need mock an environment implement a container (dependency injection)
+  const environmentArranger: Promise<EnvironmentArranger> = container.get('User.EnvironmentArranger');
+  await (await environmentArranger).arrange();
   application = new UserBackendApp();
   await application.start();
 });
 
 AfterAll(async () => {
-  // TODO: In case of need mock an environment implement a container (dependency injection)
+  const environmentArranger: Promise<EnvironmentArranger> = container.get('User.EnvironmentArranger');
+  await (await environmentArranger).arrange();
+  await (await environmentArranger).close();
   await application.stop();
 });

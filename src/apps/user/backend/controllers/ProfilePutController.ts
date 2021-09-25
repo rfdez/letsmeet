@@ -6,7 +6,11 @@ import CreateProfileCommand from '../../../../Contexts/User/Profiles/application
 import ProfileAlreadyExists from '../../../../Contexts/User/Profiles/domain/ProfileAlreadyExists';
 
 export default class ProfilePutController implements Controller {
-  constructor(private commandBus: CommandBus) {}
+  private commandBus: CommandBus;
+
+  constructor(commandBus: CommandBus) {
+    this.commandBus = commandBus;
+  }
 
   async invoke(req: Request, res: Response) {
     const id: string = req.params.id;

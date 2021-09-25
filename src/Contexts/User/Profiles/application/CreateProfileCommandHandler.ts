@@ -6,7 +6,11 @@ import ProfileId from '../../Shared/domain/Profiles/ProfileId';
 import ProfileName from '../domain/ProfileName';
 
 export default class CreateProfileCommandHandler implements CommandHandler<CreateProfileCommand> {
-  constructor(private profileCreator: ProfileCreator) {}
+  private profileCreator: ProfileCreator;
+
+  constructor(profileCreator: ProfileCreator) {
+    this.profileCreator = profileCreator;
+  }
 
   subscribedTo(): Command {
     return CreateProfileCommand;

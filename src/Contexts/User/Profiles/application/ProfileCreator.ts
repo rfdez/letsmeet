@@ -19,7 +19,6 @@ export default class ProfileCreator {
   }
 
   async invoke({ profileId, profileName }: Params): Promise<void> {
-    console.log('aqui llega');
     const profile = Profile.create(profileId, profileName);
 
     await this.repository.save(profile);

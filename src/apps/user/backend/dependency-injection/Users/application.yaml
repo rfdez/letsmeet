@@ -1,10 +1,8 @@
 services:
 
   User.profiles.ProfileRepository:
-    class: ../../../../../Contexts/User/Profiles/infrastructure/InMemoryProfileRepository
-    arguments: [ ]
-    #    class: ../../../../../Contexts/User/Profiles/infrastructure/MongoProfileRepository
-    #    arguments: [ '@Shared.ConnectionManager' ]
+    class: ../../../../../Contexts/User/Profiles/infrastructure/MongoProfileRepository
+    arguments: [ '@Shared.ConnectionManager' ]
 
   User.profiles.ProfileCreator:
     class: ../../../../../Contexts/User/Profiles/application/ProfileCreator
