@@ -60,7 +60,7 @@ test: build
 # Start user backend app
 .PHONY: start-user-backend
 start-user-backend: build
-	@docker-compose up $(USER_APP_NAME)-backend && docker-compose down
+	@docker-compose up $(USER_APP_NAME)-backend && docker-compose rm -f -s -v $(USER_APP_NAME)-backend
 
 # Clean workspace folders
 .PHONY: clean-workspace
