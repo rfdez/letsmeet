@@ -76,4 +76,4 @@ clean:
 # Start databases containers in background
 .PHONY: start-database
 start-database:
-	@docker-compose up -d mongodb
+	@docker-compose up -d mongodb rabbitmq

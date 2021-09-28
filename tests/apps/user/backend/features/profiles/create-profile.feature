@@ -7,7 +7,10 @@ Feature: Create a new profile
     Given I send a PUT request to "/profiles/ef8ac118-8d7f-49cc-abec-78e0d05af80a" with body:
     """
     {
-      "name": "Pepe"
+      "name": "Pepe",
+      "age": 23,
+      "location": "Bilbao",
+      "gender": "male"
     }
     """
     Then the response status code should be 201

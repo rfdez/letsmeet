@@ -1,9 +1,9 @@
-import request from 'supertest';
 import { AfterAll, BeforeAll, Given, Then } from '@cucumber/cucumber';
-import UserBackendApp from '../../../../../../src/apps/user/backend/UserBackendApp';
 import assert from 'assert';
-import { EnvironmentArranger } from '../../../../../Contexts/Shared/infrastructure/arranger/EnvironmentArranger';
+import request from 'supertest';
 import container from '../../../../../../src/apps/user/backend/dependency-injection';
+import UserBackendApp from '../../../../../../src/apps/user/backend/UserBackendApp';
+import { EnvironmentArranger } from '../../../../../Contexts/Shared/infrastructure/arranger/EnvironmentArranger';
 
 let _request: request.Test;
 let _response: request.Response;
@@ -23,6 +23,10 @@ Then('the response status code should be {int}', async (status: number) => {
 
 Then('the response should be empty', () => {
   assert.deepEqual(_response.body, {});
+});
+
+Then('the response content should be:', response => {
+  assert.deepEqual(_response.body, JSON.parse(response));
 });
 
 BeforeAll(async () => {

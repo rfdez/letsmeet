@@ -1,12 +1,18 @@
+import { EventBus } from '../../../Shared/domain/Bus/Event/EventBus';
 import ProfileId from '../../Shared/domain/Profiles/ProfileId';
+import Profile from '../domain/Profile';
+import ProfileAge from '../domain/ProfileAge';
+import ProfileGender from '../domain/ProfileGender';
+import ProfileLocation from '../domain/ProfileLocation';
 import ProfileName from '../domain/ProfileName';
 import { ProfileRepository } from '../domain/ProfileRepository';
-import Profile from '../domain/Profile';
-import { EventBus } from '../../../Shared/domain/Bus/Event/EventBus';
 
 type Params = {
   profileId: ProfileId;
   profileName: ProfileName;
+  profileAge: ProfileAge;
+  profileLocation: ProfileLocation;
+  profileGender: ProfileGender;
 };
 
 export default class ProfileCreator {
@@ -18,8 +24,8 @@ export default class ProfileCreator {
     this.eventBus = eventBus;
   }
 
-  async invoke({ profileId, profileName }: Params): Promise<void> {
-    const profile = Profile.create(profileId, profileName);
+  async invoke({ profileId, profileName, profileAge, profileLocation, profileGender }: Params): Promise<void> {
+    const profile = Profile.create(profileId, profileName, profileAge, profileLocation, profileGender);
 
     await this.repository.save(profile);
     await this.eventBus.publish(profile.pullDomainEvents());

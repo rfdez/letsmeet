@@ -1,18 +1,20 @@
-import { StringValueObject } from '../../../Shared/domain/value-object/StringValueObject';
 import InvalidArgumentError from '../../../Shared/domain/value-object/InvalidArgumentError';
+import { StringValueObject } from '../../../Shared/domain/value-object/StringValueObject';
 
 export default class ProfileName extends StringValueObject {
-  private readonly maxLength = 30;
+  private static readonly MAX_LENGHT = 30;
 
   constructor(value: string) {
     super(value);
 
-    this.ensureLengthIsLessThan30Characters(value);
+    ProfileName.ensureCorrectLength(value);
   }
 
-  private ensureLengthIsLessThan30Characters(value: string): void {
-    if (value.length > this.maxLength) {
-      throw new InvalidArgumentError(`The Course Name <${value}> has more than <${this.maxLength}> characters`);
+  private static ensureCorrectLength(value: string): void {
+    if (value.length > ProfileName.MAX_LENGHT) {
+      throw new InvalidArgumentError(
+        `The Profile Name <${value}> has more than <${ProfileName.MAX_LENGHT}> characters`
+      );
     }
   }
 }
