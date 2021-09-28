@@ -6,13 +6,23 @@ import ProfileId from '../../../../../src/Contexts/User/Shared/domain/Profiles/P
 export default class ProfileRepositoryMock implements ProfileRepository {
   private mockSave = jest.fn();
   private mockSearch = jest.fn();
+  private profile: Nullable<Profile> = null;
 
   async save(profile: Profile): Promise<void> {
     this.mockSave(profile);
   }
 
   async search(id: ProfileId): Promise<Nullable<Profile>> {
-    return this.mockSearch(id);
+    this.mockSearch(id);
+    return this.profile;
+  }
+
+  returnOnSearch(profile: Profile) {
+    this.profile = profile;
+  }
+
+  assertSearch() {
+    expect(this.mockSearch).toHaveBeenCalled();
   }
 
   assertLastSavedProfileIs(expected: Profile): void {

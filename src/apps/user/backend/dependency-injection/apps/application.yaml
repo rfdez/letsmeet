@@ -1,9 +1,14 @@
 services:
 
-  Apps.user.controllers.StatusGetController:
+  Apps.User.Backend.controllers.StatusGetController:
     class: ../../controllers/StatusGetController
     arguments: [ ]
 
-  Apps.user.controllers.ProfilePutController:
+  Apps.User.Backend.controllers.ProfilePutController:
     class: ../../controllers/ProfilePutController
     arguments: [ "@Shared.CommandBus" ]
+
+  Apps.User.Backend.controllers.ProfileGetController:
+    class: ../../controllers/ProfileGetController
+    arguments: [ "@Shared.QueryBus" ]
+

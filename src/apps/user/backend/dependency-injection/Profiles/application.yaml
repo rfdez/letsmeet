@@ -5,11 +5,21 @@ services:
     arguments: [ '@Shared.ConnectionManager' ]
 
   User.profiles.ProfileCreator:
-    class: ../../../../../Contexts/User/Profiles/application/ProfileCreator
+    class: ../../../../../Contexts/User/Profiles/application/Create/ProfileCreator
     arguments: [ '@User.profiles.ProfileRepository', '@Shared.EventBus' ]
 
   User.profiles.CreateProfileCommandHandler:
-    class: ../../../../../Contexts/User/Profiles/application/CreateProfileCommandHandler
+    class: ../../../../../Contexts/User/Profiles/application/Create/CreateProfileCommandHandler
     arguments: [ '@User.profiles.ProfileCreator' ]
     tags:
       - { name: 'commandHandler' }
+
+  User.profiles.ProfileFinder:
+    class: ../../../../../Contexts/User/Profiles/application/Find/ProfileFinder
+    arguments: [ "@User.profiles.ProfileRepository" ]
+
+  User.profiles.FindProfileQueryHandler:
+    class: ../../../../../Contexts/User/Profiles/application/Find/FindProfileQueryHandler
+    arguments: [ "@User.profiles.ProfileFinder" ]
+    tags:
+      - { name: 'queryHandler' }

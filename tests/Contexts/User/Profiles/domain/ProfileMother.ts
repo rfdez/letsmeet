@@ -1,4 +1,4 @@
-import CreateProfileCommand from '../../../../../src/Contexts/User/Profiles/application/CreateProfileCommand';
+import CreateProfileCommand from '../../../../../src/Contexts/User/Profiles/application/Create/CreateProfileCommand';
 import Profile from '../../../../../src/Contexts/User/Profiles/domain/Profile';
 import ProfileAge from '../../../../../src/Contexts/User/Profiles/domain/ProfileAge';
 import ProfileGender from '../../../../../src/Contexts/User/Profiles/domain/ProfileGender';

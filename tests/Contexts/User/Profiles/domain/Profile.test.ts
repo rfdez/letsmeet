@@ -1,6 +1,6 @@
 import Profile from '../../../../../src/Contexts/User/Profiles/domain/Profile';
 import ProfileIdMother from '../../Shared/domain/Profiles/ProfileIdMother';
-import CreateProfileCommandMother from '../application/CreateProfileCommandMother';
+import CreateProfileCommandMother from '../application/Create/CreateProfileCommandMother';
 import ProfileAgeMother from './ProfileAgeMother';
 import ProfileGenderMother from './ProfileGenderMother';
 import ProfileLocationMother from './ProfileLocationMother';

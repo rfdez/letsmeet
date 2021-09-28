@@ -1,0 +1,35 @@
+services:
+
+  Recommendation.suggestions.ElasticConfig:
+    factory:
+      class: ../../../../../Contexts/Recommendation/Shared/infrastructure/persistence/elastic/RecommendationElasticConfigFactory
+      method: 'createConfig'
+
+  Recommendation.suggestions.RabbitMqConfig:
+    factory:
+      class: ../../../../../Contexts/Recommendation/Shared/infrastructure/Bus/Event/RabbitMq/RabbitMqConfigFactory
+      method: 'createConfig'
+
+  Recommendation.suggestions.SuggestionRepository:
+    class: ../../../../../Contexts/Recommendation/Suggestions/infrastructure/persistence/elastic/ElasticSuggestionProfileRepository
+    arguments: [ "@Shared.ElasticConnectionManager", "@Recommendation.suggestions.ElasticConfig" ]
+
+  Recommendation.suggestions.SuggestionsByCriteriaSearcher:
+    class: ../../../../../Contexts/Recommendation/Suggestions/application/SearchByCriteria/SuggestionsByCriteriaSearcher
+    arguments: [ '@Recommendation.suggestions.SuggestionRepository' ]
+
+  Recommendation.suggestions.SearchSuggestionsByCriteriaQueryHandler:
+    class: ../../../../../Contexts/Recommendation/Suggestions/application/SearchByCriteria/SearchSuggestionsByCriteriaQueryHandler
+    arguments: [ '@Recommendation.suggestions.SuggestionsByCriteriaSearcher' ]
+    tags:
+      - { name: 'queryHandler' }
+
+  Recommendation.suggestions.SuggestionCreator:
+    class: ../../../../../Contexts/Recommendation/Suggestions/application/Create/SuggestionCreator
+    arguments: [ "@Recommendation.suggestions.SuggestionRepository" ]
+
+  Recommendation.suggestions.CreateSuggestionOnProfileCreated:
+    class: ../../../../../Contexts/Recommendation/Suggestions/application/Create/CreateSuggestionOnProfileCreated
+    arguments: [ "@Recommendation.suggestions.SuggestionCreator" ]
+    tags:
+      - { name: 'domainEventSubscriber' }

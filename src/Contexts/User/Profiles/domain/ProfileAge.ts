@@ -1,5 +1,5 @@
-import { NumberValueObject } from '../../../Shared/domain/value-object/IntValueObject';
-import InvalidArgumentError from '../../../Shared/domain/value-object/InvalidArgumentError';
+import { NumberValueObject } from '../../../Shared/domain/ValueObject/IntValueObject';
+import InvalidArgumentError from '../../../Shared/domain/ValueObject/InvalidArgumentError';
 
 export default class ProfileAge extends NumberValueObject {
   private static readonly MIN_AGE = 18;

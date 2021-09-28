@@ -11,6 +11,13 @@ const userBackend = [
   '--require tests/apps/user/backend/features/steps/*.steps.ts'
 ].join(' ');
 
+const recommendationBackend = [
+  ...common,
+  'tests/apps/recommendation/backend/features/**/*.feature',
+  '--require tests/apps/recommendation/backend/features/steps/*.steps.ts'
+].join(' ');
+
 module.exports = {
-  userBackend
+  userBackend,
+  recommendationBackend
 };

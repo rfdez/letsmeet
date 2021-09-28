@@ -3,6 +3,7 @@ SHELL := $(shell which bash)
 
 SERVICE_NAME := app
 USER_APP_NAME := user
+RECOMMENDATION_APP_NAME := recommendation
 
 # Test if the dependencies we need to run this Makefile are installed
 DOCKER := $(shell command -v docker)
@@ -57,10 +58,20 @@ build:
 test: build
 	@docker-compose run --rm $(SERVICE_NAME) bash -c 'npm run test'
 
+.PHONY: start-all
+start-all: build
+	@docker-compose up $(USER_APP_NAME)-backend $(RECOMMENDATION_APP_NAME)-backend && \
+docker-compose rm -f -s -v $(USER_APP_NAME)-backend $(RECOMMENDATION_APP_NAME)-backend
+
 # Start user backend app
 .PHONY: start-user-backend
 start-user-backend: build
 	@docker-compose up $(USER_APP_NAME)-backend && docker-compose rm -f -s -v $(USER_APP_NAME)-backend
+
+# Start recommendation backend app
+.PHONY: start-recommendation-backend
+start-recommendation-backend: build
+	@docker-compose up $(RECOMMENDATION_APP_NAME)-backend && docker-compose rm -f -s -v $(RECOMMENDATION_APP_NAME)-backend
 
 # Clean workspace folders
 .PHONY: clean-workspace
@@ -76,4 +87,4 @@ clean:
 # Start databases containers in background
 .PHONY: start-database
 start-database:
-	@docker-compose up -d mongodb rabbitmq
+	@docker-compose up -d mongodb rabbitmq elasticsearch

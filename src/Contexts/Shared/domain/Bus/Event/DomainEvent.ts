@@ -1,4 +1,4 @@
-import Uuid from '../../value-object/Uuid';
+import Uuid from '../../ValueObject/Uuid';
 
 export abstract class DomainEvent {
   static readonly EVENT_NAME: string;

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import { CommandBus } from '../../../../Contexts/Shared/domain/Bus/Command/CommandBus';
-import CreateProfileCommand from '../../../../Contexts/User/Profiles/application/CreateProfileCommand';
+import CreateProfileCommand from '../../../../Contexts/User/Profiles/application/Create/CreateProfileCommand';
 import ProfileAlreadyExists from '../../../../Contexts/User/Profiles/domain/ProfileAlreadyExists';
 import { Controller } from './Controller';
 
@@ -25,14 +25,11 @@ export default class ProfilePutController implements Controller {
       await this.commandBus.dispatch(createProfileCommand);
     } catch (error) {
       if (error instanceof ProfileAlreadyExists) {
-        res.status(httpStatus.BAD_REQUEST);
-        res.send(error.message);
+        res.status(httpStatus.BAD_REQUEST).send(error.message);
       }
-      res.status(httpStatus.INTERNAL_SERVER_ERROR);
-      res.send(error);
+      res.status(httpStatus.INTERNAL_SERVER_ERROR).send(error);
     }
 
-    res.status(httpStatus.CREATED);
-    res.send();
+    res.status(httpStatus.CREATED).send();
   }
 }

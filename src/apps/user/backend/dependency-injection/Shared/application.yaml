@@ -31,3 +31,11 @@ services:
   Shared.CommandBus:
     class: ../../../../../Contexts/Shared/infrastructure/Bus/Command/InMemoryCommandBus
     arguments: [ '@Shared.CommandHandlersInformation' ]
+
+  Shared.QueryHandlersInformation:
+    class: ../../../../../Contexts/Shared/infrastructure/Bus/Query/QueryHandlersInformation
+    arguments: [ '!tagged queryHandler' ]
+
+  Shared.QueryBus:
+    class: ../../../../../Contexts/Shared/infrastructure/Bus/Query/InMemoryQueryBus
+    arguments: [ '@Shared.QueryHandlersInformation' ]

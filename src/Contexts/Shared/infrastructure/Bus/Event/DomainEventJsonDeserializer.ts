@@ -8,7 +8,7 @@ export default class DomainEventJsonDeserializer {
     this.mapping = mapping;
   }
 
-  deserialize(event: string): DomainEvent | undefined {
+  deserialize(event: string): undefined | DomainEvent {
     const eventData = JSON.parse(event).data;
     const eventName = eventData.type;
     const eventClass = this.mapping.forEventName(eventName);

@@ -3,7 +3,7 @@ imports:
 
 services:
   User.EnvironmentArranger:
-    class: ../../../../../tests/Contexts/Shared/infrastructure/mongo/MongoEnvironmentArranger
+    class: ../../../../../tests/Contexts/Shared/infrastructure/Arranger/mongo/MongoEnvironmentArranger
     arguments: [ '@Shared.ConnectionManager' ]
 
   Shared.EventBus:

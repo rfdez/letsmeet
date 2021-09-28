@@ -24,10 +24,9 @@ export default class Server {
 
     registerRoutes(router);
 
-    router.use((err: Error, req: Request, res: Response) => {
-      this.logger.error(err);
-      res.status(httpStatus.INTERNAL_SERVER_ERROR);
-      res.send(err.message);
+    router.use((err: Error, req: Request, res: Response, next: Function) => {
+      this.logger.error(err.message);
+      res.status(httpStatus.INTERNAL_SERVER_ERROR).send(err.message);
     });
   }
 
@@ -35,7 +34,7 @@ export default class Server {
     return new Promise(resolve => {
       this.httpServer = this.express.listen(this.port, () => {
         const env = this.express.get('env');
-        this.logger.info(`  Meeting Backend App is running at http://localhost:${this.port} in ${env} mode`);
+        this.logger.info(`  User Backend App is running at http://localhost:${this.port} in ${env} mode`);
         this.logger.info('  Press CTRL-C to stop\n');
         resolve();
       });

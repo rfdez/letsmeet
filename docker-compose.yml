@@ -3,11 +3,12 @@ version: '3.9'
 x-app-service: &default-app
   build: .
   command: ''
-  environment:
-    - MONGO_URL=mongodb://mongodb:27017/dev
+  #  environment:
+  #    - MONGO_URL=mongodb://mongodb:27017/dev
   depends_on:
     - mongodb
     - rabbitmq
+    - elasticsearch
   volumes:
     - .:/code:delegated
 
@@ -18,8 +19,16 @@ services:
   user-backend:
     <<: *default-app
     command: bash -c "npm run start:user:backend"
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017/dev
     ports:
       - '3000:3000'
+
+  recommendation-backend:
+    <<: *default-app
+    command: bash -c "npm run start:recommendation:backend"
+    ports:
+      - '3001:3001'
 
   mongodb:
     image: mongo:5.0.3
@@ -34,5 +43,30 @@ services:
       - '5672:5672'
       - '15672:15672'
 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
+    environment:
+      - node.name=letsmeet-elasticsearch
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elastic:/usr/share/elasticsearch/data
+    ports:
+      - '9200:9200'
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.15.0
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+    ports:
+      - '5601:5601'
+
 volumes:
   mongodb:
+  elastic:

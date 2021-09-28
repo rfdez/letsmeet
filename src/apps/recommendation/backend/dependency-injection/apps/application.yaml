@@ -1,0 +1,9 @@
+services:
+
+  Apps.Recommendation.Backend.controllers.StatusGetController:
+    class: ../../controllers/StatusGetController
+    arguments: [ ]
+
+  Apps.Recommendation.Backend.controllers.SuggestionsGetController:
+    class: ../../controllers/SuggestionsGetController
+    arguments: [ '@Shared.QueryBus' ]
