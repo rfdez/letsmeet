@@ -3,8 +3,6 @@ version: '3.9'
 x-app-service: &default-app
   build: .
   command: ''
-  #  environment:
-  #    - MONGO_URL=mongodb://mongodb:27017/dev
   depends_on:
     - mongodb
     - rabbitmq
@@ -19,8 +17,6 @@ services:
   user-backend:
     <<: *default-app
     command: bash -c "npm run start:user:backend"
-    environment:
-      - MONGO_URL=mongodb://mongodb:27017/dev
     ports:
       - '3000:3000'
 
@@ -38,13 +34,13 @@ services:
       - '27017:27017'
 
   rabbitmq:
-    image: rabbitmq:3.9.7-management
+    image: rabbitmq:3.9.7-management-alpine
     ports:
       - '5672:5672'
       - '15672:15672'
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.1
     environment:
       - node.name=letsmeet-elasticsearch
       - discovery.type=single-node

@@ -12,7 +12,7 @@ const userConfig = convict({
     url: {
       doc: 'The mongo connection URL',
       format: String,
-      default: 'mongodb://mongodb:27017/user-backend-dev',
+      default: 'mongodb://mongodb:27017/user-backend',
       env: 'MONGO_URL'
     }
   },

@@ -1,4 +1,6 @@
-<h1 style="text-align: center;">Typescript DDD Test</h1>
+# Typescript DDD Test
+
+![Nodejs CI workflow](https://github.com/rfdez/letsmeet/actions/workflows/nodejs.yml/badge.svg)
 
 ## Environment Setup
 

@@ -43,15 +43,10 @@ npm-uninstall: CMD=uninstall $(package)
 npm npm-install npm-update npm-dep npm-dev npm-uninstall:
 	docker-compose run --rm $(SERVICE_NAME) bash -c 'npm $(CMD)'
 
-# Lint project
-.PHONY: lint
-lint:
-	@docker-compose run --rm $(SERVICE_NAME) bash -c 'npm run lint'
-
 # Build project
 .PHONY: build
 build:
-	@docker-compose run --rm $(SERVICE_NAME) bash -c 'npm run build'
+	@docker-compose run --rm $(SERVICE_NAME) bash -c 'npm run lint && npm run build'
 
 # Run tests
 .PHONY: test

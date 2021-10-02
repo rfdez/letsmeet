@@ -30,24 +30,6 @@ const recommendationConfig = convict({
           index: {
             number_of_replicas: 0 // for local development
           }
-        },
-        mappings: {
-          properties: {
-            id: {
-              type: 'keyword',
-              index: true
-            },
-            name: {
-              type: 'text',
-              index: true,
-              fielddata: true
-            },
-            duration: {
-              type: 'text',
-              index: true,
-              fielddata: true
-            }
-          }
         }
       }
     }
