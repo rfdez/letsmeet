@@ -25,3 +25,11 @@ Feature: Obtain a profile details
       "gender": "male"
     }
     """
+
+  Scenario: A invalid identifier profile
+    Given I send a GET request to "/profiles/00000000-0000-0000-0000-000000000000"
+    Then the response status code should be 400
+
+  Scenario: A non exiting profile
+    Given I send a GET request to "/profiles/81461eb0-f001-4674-91f7-80befd318bfb"
+    Then the response status code should be 404

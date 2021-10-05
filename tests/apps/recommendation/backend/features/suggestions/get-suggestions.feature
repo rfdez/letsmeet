@@ -122,3 +122,8 @@ Feature: Obtain profiles suggestion
       }
     ]
     """
+
+  Scenario: Without profiles
+    Given I send a GET request to "/suggestions"
+    Then the response status code should be 200
+    And the response should be an empty array

@@ -25,6 +25,10 @@ Then('the response should be empty', () => {
   assert.deepEqual(_response.body, {});
 });
 
+Then('the response should be an empty array', () => {
+  assert.deepEqual(_response.body, []);
+});
+
 Then('the response should be:', async response => {
   const expectedResponse = JSON.parse(response);
   _response = await _request;
