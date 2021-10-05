@@ -3,7 +3,7 @@ import SuggestionAge from '../../domain/SuggestionAge';
 import SuggestionGender from '../../domain/SuggestionGender';
 import SuggestionId from '../../domain/SuggestionId';
 import SuggestionLocation from '../../domain/SuggestionLocation';
-import { SuggestionRepository } from '../../domain/SuggestionRepository';
+import SuggestionRepository from '../../domain/SuggestionRepository';
 
 export default class SuggestionCreator {
   private repository: SuggestionRepository;

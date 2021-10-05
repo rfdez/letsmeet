@@ -1,5 +1,5 @@
 import Query from '../../../domain/Bus/Query/Query';
-import { QueryBus } from '../../../domain/Bus/Query/QueryBus';
+import QueryBus from '../../../domain/Bus/Query/QueryBus';
 import Response from '../../../domain/Bus/Query/Response';
 import QueryHandlersInformation from './QueryHandlersInformation';
 

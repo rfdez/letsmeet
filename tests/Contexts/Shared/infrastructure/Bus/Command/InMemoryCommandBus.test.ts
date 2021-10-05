@@ -1,5 +1,5 @@
-import { Command } from '../../../../../../src/Contexts/Shared/domain/Bus/Command/Command';
-import { CommandHandler } from '../../../../../../src/Contexts/Shared/domain/Bus/Command/CommandHandler';
+import Command from '../../../../../../src/Contexts/Shared/domain/Bus/Command/Command';
+import CommandHandler from '../../../../../../src/Contexts/Shared/domain/Bus/Command/CommandHandler';
 import CommandNotRegisteredError from '../../../../../../src/Contexts/Shared/domain/Bus/Command/CommandNotRegisteredError';
 import CommandHandlersInformation from '../../../../../../src/Contexts/Shared/infrastructure/Bus/Command/CommandHandlersInformation';
 import InMemoryCommandBus from '../../../../../../src/Contexts/Shared/infrastructure/Bus/Command/InMemoryCommandBus';

@@ -1,12 +1,12 @@
 import ProfileLocation from '../../../../../src/Contexts/User/Profiles/domain/ProfileLocation';
-import WordMother from '../../../Shared/domain/WordMother';
+import MotherCreator from '../../../Shared/domain/MotherCreator';
 
 export default class ProfileLocationMother {
-  public static create(value: string): ProfileLocation {
+  static create(value: string): ProfileLocation {
     return new ProfileLocation(value);
   }
 
-  public static random(): ProfileLocation {
-    return this.create(WordMother.random());
+  static random(): ProfileLocation {
+    return this.create(MotherCreator.random().address.cityName());
   }
 }

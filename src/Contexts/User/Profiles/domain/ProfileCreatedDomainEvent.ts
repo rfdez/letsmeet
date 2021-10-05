@@ -1,4 +1,4 @@
-import { DomainEvent } from '../../../Shared/domain/Bus/Event/DomainEvent';
+import DomainEvent from '../../../Shared/domain/Bus/Event/DomainEvent';
 
 type CreateProfileDomainEventBody = {
   readonly id: string;

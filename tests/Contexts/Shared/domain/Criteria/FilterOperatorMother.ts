@@ -1,12 +1,12 @@
 import FilterOperator, { Operator } from '../../../../../src/Contexts/Shared/domain/Criteria/FilterOperator';
 
 export default class FilterOperatorMother {
-  public static create(operator?: string): FilterOperator {
-    return FilterOperator.fromValue(operator ?? this.random());
+  static create(operator?: string): FilterOperator {
+    return operator ? FilterOperator.fromValue(operator) : new FilterOperator(this.random());
   }
 
   private static random() {
-    const values = Object.keys(Operator);
-    return values[Math.floor(Math.random() * values.length)];
+    const options: Operator[] = Object.values(Operator);
+    return options[Math.floor(Math.random() * options.length)];
   }
 }

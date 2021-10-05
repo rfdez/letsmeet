@@ -1,8 +1,8 @@
 import http from 'http';
 import { Definition } from 'node-dependency-injection';
-import { DomainEvent } from '../../../Contexts/Shared/domain/Bus/Event/DomainEvent';
-import { DomainEventSubscriber } from '../../../Contexts/Shared/domain/Bus/Event/DomainEventSubscriber';
-import { EventBus } from '../../../Contexts/Shared/domain/Bus/Event/EventBus';
+import DomainEvent from '../../../Contexts/Shared/domain/Bus/Event/DomainEvent';
+import DomainEventSubscriber from '../../../Contexts/Shared/domain/Bus/Event/DomainEventSubscriber';
+import EventBus from '../../../Contexts/Shared/domain/Bus/Event/EventBus';
 import DomainEventMapping from '../../../Contexts/Shared/infrastructure/Bus/Event/DomainEventMapping';
 import container from './dependency-injection';
 import Server from './server';

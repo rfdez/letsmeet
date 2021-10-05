@@ -10,7 +10,7 @@ export default class CreateProfileCommandMother {
     return new CreateProfileCommand({ id, name, age, location, gender });
   }
 
-  public static random(): CreateProfileCommand {
+  static random(): CreateProfileCommand {
     return this.create(
       ProfileIdMother.random().value,
       ProfileNameMother.random().value,

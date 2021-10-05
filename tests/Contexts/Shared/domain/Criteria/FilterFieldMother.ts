@@ -2,7 +2,7 @@ import FilterField from '../../../../../src/Contexts/Shared/domain/Criteria/Filt
 import WordMother from '../WordMother';
 
 export default class FilterFieldMother {
-  public static create(fielName?: string): FilterField {
-    return new FilterField(fielName ?? WordMother.random());
+  static create(fieldName?: string): FilterField {
+    return new FilterField(fieldName ?? WordMother.random());
   }
 }

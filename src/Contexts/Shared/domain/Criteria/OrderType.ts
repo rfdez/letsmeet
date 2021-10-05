@@ -1,4 +1,4 @@
-import { EnumValueObject } from '../ValueObject/EnumValueObject';
+import EnumValueObject from '../ValueObject/EnumValueObject';
 import InvalidArgumentError from '../ValueObject/InvalidArgumentError';
 
 export enum OrderTypes {
@@ -23,11 +23,11 @@ export default class OrderType extends EnumValueObject<OrderTypes> {
     }
   }
 
-  public isNone(): boolean {
+  isNone(): boolean {
     return this.value === OrderTypes.NONE;
   }
 
-  public isAsc(): boolean {
+  isAsc(): boolean {
     return this.value === OrderTypes.ASC;
   }
 

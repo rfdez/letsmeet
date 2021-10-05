@@ -1,7 +1,7 @@
 import MotherCreator from './MotherCreator';
 
 export default class IntegerMother {
-  public static random(max?: number): number {
-    return MotherCreator.random().datatype.number(max);
+  static random(min?: number, max?: number): number {
+    return MotherCreator.random().datatype.number({ min, max });
   }
 }

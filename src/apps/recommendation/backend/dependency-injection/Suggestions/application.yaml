@@ -11,7 +11,7 @@ services:
       method: 'createConfig'
 
   Recommendation.suggestions.SuggestionRepository:
-    class: ../../../../../Contexts/Recommendation/Suggestions/infrastructure/persistence/elastic/ElasticSuggestionProfileRepository
+    class: ../../../../../Contexts/Recommendation/Suggestions/infrastructure/persistence/elastic/ElasticSuggestionRepository
     arguments: [ "@Shared.ElasticConnectionManager", "@Recommendation.suggestions.ElasticConfig" ]
 
   Recommendation.suggestions.SuggestionsByCriteriaSearcher:

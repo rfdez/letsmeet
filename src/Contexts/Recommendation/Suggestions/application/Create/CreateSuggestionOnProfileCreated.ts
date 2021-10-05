@@ -1,5 +1,5 @@
 import { DomainEventClass } from '../../../../Shared/domain/Bus/Event/DomainEvent';
-import { DomainEventSubscriber } from '../../../../Shared/domain/Bus/Event/DomainEventSubscriber';
+import DomainEventSubscriber from '../../../../Shared/domain/Bus/Event/DomainEventSubscriber';
 import ProfileCreatedDomainEvent from '../../../../User/Profiles/domain/ProfileCreatedDomainEvent';
 import SuggestionCreator from './SuggestionCreator';
 

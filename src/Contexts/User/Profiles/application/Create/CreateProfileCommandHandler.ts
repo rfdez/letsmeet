@@ -1,5 +1,5 @@
-import { Command } from '../../../../Shared/domain/Bus/Command/Command';
-import { CommandHandler } from '../../../../Shared/domain/Bus/Command/CommandHandler';
+import Command from '../../../../Shared/domain/Bus/Command/Command';
+import CommandHandler from '../../../../Shared/domain/Bus/Command/CommandHandler';
 import ProfileId from '../../../Shared/domain/Profiles/ProfileId';
 import ProfileAge from '../../domain/ProfileAge';
 import ProfileGender from '../../domain/ProfileGender';

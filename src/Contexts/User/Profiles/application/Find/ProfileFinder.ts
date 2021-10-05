@@ -1,6 +1,6 @@
 import ProfileId from '../../../Shared/domain/Profiles/ProfileId';
 import ProfileNotExist from '../../domain/ProfileNotExist';
-import { ProfileRepository } from '../../domain/ProfileRepository';
+import ProfileRepository from '../../domain/ProfileRepository';
 import FindProfileResponse from './FindProfileResponse';
 
 type Params = {

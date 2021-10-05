@@ -1,4 +1,4 @@
-import { DomainEvent } from '../../../domain/Bus/Event/DomainEvent';
+import DomainEvent from '../../../domain/Bus/Event/DomainEvent';
 import DomainEventMapping from './DomainEventMapping';
 
 export default class DomainEventJsonDeserializer {

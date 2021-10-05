@@ -1,4 +1,4 @@
-import { AggregateRoot } from '../../../Shared/domain/Aggregate/AggregateRoot';
+import AggregateRoot from '../../../Shared/domain/Aggregate/AggregateRoot';
 import SuggestionAge from './SuggestionAge';
 import SuggestionGender from './SuggestionGender';
 import SuggestionId from './SuggestionId';
@@ -18,7 +18,7 @@ export default class Suggestion extends AggregateRoot {
     this.location = location;
   }
 
-  public static create(
+  static create(
     id: SuggestionId,
     age: SuggestionAge,
     gender: SuggestionGender,
@@ -27,7 +27,7 @@ export default class Suggestion extends AggregateRoot {
     return new Suggestion(id, age, gender, location);
   }
 
-  public static fromPrimitives(plainData: { id: string; age: number; gender: string; location: string }): Suggestion {
+  static fromPrimitives(plainData: { id: string; age: number; gender: string; location: string }): Suggestion {
     return Suggestion.create(
       new SuggestionId(plainData.id),
       new SuggestionAge(plainData.age),

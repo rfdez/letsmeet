@@ -1,7 +1,7 @@
 import Criteria from '../../../Shared/domain/Criteria/Criteria';
 import Suggestion from './Suggestion';
 
-export interface SuggestionRepository {
+export default interface SuggestionRepository {
   searchAll(): Promise<Array<Suggestion>>;
 
   save(suggestion: Suggestion): Promise<void>;

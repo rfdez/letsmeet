@@ -1,5 +1,5 @@
-import { Command } from '../../../domain/Bus/Command/Command';
-import { CommandHandler } from '../../../domain/Bus/Command/CommandHandler';
+import Command from '../../../domain/Bus/Command/Command';
+import CommandHandler from '../../../domain/Bus/Command/CommandHandler';
 import CommandNotRegisteredError from '../../../domain/Bus/Command/CommandNotRegisteredError';
 
 export default class CommandHandlersInformation {
@@ -20,7 +20,7 @@ export default class CommandHandlersInformation {
     return handlersMap;
   }
 
-  public search(command: Command): CommandHandler<Command> {
+  search(command: Command): CommandHandler<Command> {
     const commandHandler = this.commandHandlersMap.get(command.constructor);
 
     if (!commandHandler) {

@@ -1,7 +1,7 @@
 import { Connection, Exchange, Message, Queue } from 'amqp-ts';
-import { DomainEvent } from '../../../../domain/Bus/Event/DomainEvent';
-import { DomainEventSubscriber } from '../../../../domain/Bus/Event/DomainEventSubscriber';
-import { EventBus } from '../../../../domain/Bus/Event/EventBus';
+import DomainEvent from '../../../../domain/Bus/Event/DomainEvent';
+import DomainEventSubscriber from '../../../../domain/Bus/Event/DomainEventSubscriber';
+import EventBus from '../../../../domain/Bus/Event/EventBus';
 import Logger from '../../../../domain/Logger';
 import DomainEventJsonDeserializer from '../DomainEventJsonDeserializer';
 import DomainEventMapping from '../DomainEventMapping';

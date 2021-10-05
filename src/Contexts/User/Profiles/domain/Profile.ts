@@ -1,4 +1,4 @@
-import { AggregateRoot } from '../../../Shared/domain/Aggregate/AggregateRoot';
+import AggregateRoot from '../../../Shared/domain/Aggregate/AggregateRoot';
 import ProfileId from '../../Shared/domain/Profiles/ProfileId';
 import ProfileAge from './ProfileAge';
 import ProfileCreatedDomainEvent from './ProfileCreatedDomainEvent';

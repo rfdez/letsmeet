@@ -2,11 +2,13 @@ import ProfileAge from '../../../../../src/Contexts/User/Profiles/domain/Profile
 import IntegerMother from '../../../Shared/domain/IntegerMother';
 
 export default class ProfileAgeMother {
-  public static create(value: number): ProfileAge {
+  private static readonly MIN_AGE = 18;
+
+  static create(value: number): ProfileAge {
     return new ProfileAge(value);
   }
 
-  public static random(): ProfileAge {
-    return this.create(IntegerMother.random());
+  static random(): ProfileAge {
+    return this.create(IntegerMother.random(this.MIN_AGE));
   }
 }

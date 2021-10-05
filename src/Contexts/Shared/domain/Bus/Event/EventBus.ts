@@ -1,8 +1,8 @@
 import DomainEventMapping from '../../../infrastructure/Bus/Event/DomainEventMapping';
-import { DomainEvent } from './DomainEvent';
-import { DomainEventSubscriber } from './DomainEventSubscriber';
+import DomainEvent from './DomainEvent';
+import DomainEventSubscriber from './DomainEventSubscriber';
 
-export interface EventBus {
+export default interface EventBus {
   setDomainEventMapping(domainEventMapping: DomainEventMapping): void;
 
   publish(events: Array<DomainEvent>): Promise<void>;

@@ -1,6 +1,6 @@
 import container from '../../../../../../src/apps/user/backend/dependency-injection';
-import { ProfileRepository } from '../../../../../../src/Contexts/User/Profiles/domain/ProfileRepository';
-import { EnvironmentArranger } from '../../../../Shared/infrastructure/Arranger/EnvironmentArranger';
+import ProfileRepository from '../../../../../../src/Contexts/User/Profiles/domain/ProfileRepository';
+import EnvironmentArranger from '../../../../Shared/infrastructure/Arranger/EnvironmentArranger';
 import ProfileMother from '../../domain/ProfileMother';
 
 const repository: ProfileRepository = container.get('User.profiles.ProfileRepository');

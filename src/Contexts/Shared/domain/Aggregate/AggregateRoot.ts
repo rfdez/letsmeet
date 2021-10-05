@@ -1,6 +1,6 @@
-import { DomainEvent } from '../Bus/Event/DomainEvent';
+import DomainEvent from '../Bus/Event/DomainEvent';
 
-export abstract class AggregateRoot {
+export default abstract class AggregateRoot {
   private domainEvents: Array<DomainEvent>;
 
   constructor() {

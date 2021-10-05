@@ -3,7 +3,7 @@ import assert from 'assert';
 import request from 'supertest';
 import container from '../../../../../../src/apps/user/backend/dependency-injection';
 import UserBackendApp from '../../../../../../src/apps/user/backend/UserBackendApp';
-import { EnvironmentArranger } from '../../../../../Contexts/Shared/infrastructure/Arranger/EnvironmentArranger';
+import EnvironmentArranger from '../../../../../Contexts/Shared/infrastructure/Arranger/EnvironmentArranger';
 
 let _request: request.Test;
 let _response: request.Response;

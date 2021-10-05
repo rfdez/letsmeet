@@ -1,6 +1,6 @@
-import { DomainEvent } from '../../../../domain/Bus/Event/DomainEvent';
-import { DomainEventSubscriber } from '../../../../domain/Bus/Event/DomainEventSubscriber';
-import { EventBus } from '../../../../domain/Bus/Event/EventBus';
+import DomainEvent from '../../../../domain/Bus/Event/DomainEvent';
+import DomainEventSubscriber from '../../../../domain/Bus/Event/DomainEventSubscriber';
+import EventBus from '../../../../domain/Bus/Event/EventBus';
 import DomainEventMapping from '../DomainEventMapping';
 
 type Subscription = {

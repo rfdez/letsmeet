@@ -1,6 +1,6 @@
 import { Nullable } from '../../../../../src/Contexts/Shared/domain/Nullable';
 import Profile from '../../../../../src/Contexts/User/Profiles/domain/Profile';
-import { ProfileRepository } from '../../../../../src/Contexts/User/Profiles/domain/ProfileRepository';
+import ProfileRepository from '../../../../../src/Contexts/User/Profiles/domain/ProfileRepository';
 import ProfileId from '../../../../../src/Contexts/User/Shared/domain/Profiles/ProfileId';
 
 export default class ProfileRepositoryMock implements ProfileRepository {

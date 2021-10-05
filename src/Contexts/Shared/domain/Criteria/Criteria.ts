@@ -15,7 +15,7 @@ export default class Criteria {
     this.offset = offset;
   }
 
-  public hasFilters(): boolean {
+  hasFilters(): boolean {
     return this.filters.filters.length > Criteria.MINIMUM_NUM_FILTERS;
   }
 }

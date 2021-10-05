@@ -2,7 +2,7 @@ import Profile from '../../../../../src/Contexts/User/Profiles/domain/Profile';
 import ProfileCreatedDomainEvent from '../../../../../src/Contexts/User/Profiles/domain/ProfileCreatedDomainEvent';
 
 export default class ProfileCreatedDomainEventMother {
-  public static create({
+  static create({
     id,
     name,
     age,

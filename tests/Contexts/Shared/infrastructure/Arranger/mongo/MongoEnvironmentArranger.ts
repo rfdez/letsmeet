@@ -1,12 +1,12 @@
 import { MongoClient } from 'mongodb';
-import { EnvironmentArranger } from '../EnvironmentArranger';
+import EnvironmentArranger from '../EnvironmentArranger';
 
 export default class MongoEnvironmentArranger extends EnvironmentArranger {
   constructor(private mongoClient: Promise<MongoClient>) {
     super();
   }
 
-  public async arrange(): Promise<void> {
+  async arrange(): Promise<void> {
     await this.cleanDatabase();
   }
 
@@ -30,7 +30,7 @@ export default class MongoEnvironmentArranger extends EnvironmentArranger {
     return this.mongoClient;
   }
 
-  public async close(): Promise<void> {
+  async close(): Promise<void> {
     return (await this.client()).close();
   }
 }

@@ -2,14 +2,14 @@ import { Client as ElasticClient } from '@elastic/elasticsearch';
 import { ResponseError } from '@elastic/elasticsearch/lib/errors';
 import bodybuilder, { Bodybuilder } from 'bodybuilder';
 import httpStatus from 'http-status';
-import { AggregateRoot } from '../../../domain/Aggregate/AggregateRoot';
+import AggregateRoot from '../../../domain/Aggregate/AggregateRoot';
 import Criteria from '../../../domain/Criteria/Criteria';
 import { ElasticConfig } from './ElasticConfig';
 import ElasticCriteriaConverter, { TypeQueryEnum } from './ElasticCriteriaConverter';
 
 type Punch = { _source: any };
 
-export abstract class ElasticRepository<T extends AggregateRoot> {
+export default abstract class ElasticRepository<T extends AggregateRoot> {
   private readonly elasticClient: Promise<ElasticClient>;
   private config: ElasticConfig;
   private criteriaConverter: ElasticCriteriaConverter;

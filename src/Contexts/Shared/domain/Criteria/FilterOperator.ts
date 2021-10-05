@@ -1,4 +1,4 @@
-import { EnumValueObject } from '../ValueObject/EnumValueObject';
+import EnumValueObject from '../ValueObject/EnumValueObject';
 import InvalidArgumentError from '../ValueObject/InvalidArgumentError';
 
 export enum Operator {
@@ -34,7 +34,7 @@ export default class FilterOperator extends EnumValueObject<Operator> {
     }
   }
 
-  public isPositive(): boolean {
+  isPositive(): boolean {
     return this.value !== Operator.NOT_EQUAL && this.value !== Operator.NOT_CONTAINS;
   }
 

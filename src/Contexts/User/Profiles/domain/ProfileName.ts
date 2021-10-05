@@ -1,5 +1,5 @@
 import InvalidArgumentError from '../../../Shared/domain/ValueObject/InvalidArgumentError';
-import { StringValueObject } from '../../../Shared/domain/ValueObject/StringValueObject';
+import StringValueObject from '../../../Shared/domain/ValueObject/StringValueObject';
 
 export default class ProfileName extends StringValueObject {
   private static readonly MAX_LENGHT = 30;

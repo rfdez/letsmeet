@@ -1,4 +1,4 @@
-export abstract class StringValueObject {
+export default abstract class StringValueObject {
   readonly value: string;
 
   constructor(value: string) {

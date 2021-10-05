@@ -1,5 +1,5 @@
-export abstract class EnvironmentArranger {
-  public abstract arrange(): Promise<void>;
+export default abstract class EnvironmentArranger {
+  abstract arrange(): Promise<void>;
 
-  public abstract close(): Promise<void>;
+  abstract close(): Promise<void>;
 }

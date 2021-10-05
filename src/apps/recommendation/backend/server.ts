@@ -1,11 +1,13 @@
 import bodyParser from 'body-parser';
+import compress from 'compression';
 import express, { Request, Response } from 'express';
 import Router from 'express-promise-router';
+import helmet from 'helmet';
 import http from 'http';
 import httpStatus from 'http-status';
 import Logger from '../../../Contexts/Shared/domain/Logger';
 import container from './dependency-injection';
-import { registerRoutes } from './routes';
+import registerRoutes from './routes';
 
 export default class Server {
   private express: express.Express;
@@ -19,6 +21,8 @@ export default class Server {
     this.express = express();
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: true }));
+    this.express.use(helmet());
+    this.express.use(compress());
     const router = Router();
     this.express.use(router);
 
@@ -26,7 +30,7 @@ export default class Server {
 
     router.use((err: Error, req: Request, res: Response, next: Function) => {
       this.logger.error(err.message);
-      res.status(httpStatus.INTERNAL_SERVER_ERROR).send(err.message);
+      res.status(httpStatus.INTERNAL_SERVER_ERROR).send(httpStatus['500_MESSAGE']);
     });
   }
 

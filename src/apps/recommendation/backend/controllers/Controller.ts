@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
 
-export interface Controller {
+export default interface Controller {
   invoke(req: Request, res: Response): Promise<void>;
 }

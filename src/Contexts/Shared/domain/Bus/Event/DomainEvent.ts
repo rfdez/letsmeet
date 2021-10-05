@@ -1,6 +1,6 @@
 import Uuid from '../../ValueObject/Uuid';
 
-export abstract class DomainEvent {
+export default abstract class DomainEvent {
   static readonly EVENT_NAME: string;
   static fromPrimitives: (...args: any[]) => any;
   readonly aggregateId: string;

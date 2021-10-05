@@ -1,11 +1,11 @@
-import { EventBus } from '../../../../Shared/domain/Bus/Event/EventBus';
+import EventBus from '../../../../Shared/domain/Bus/Event/EventBus';
 import ProfileId from '../../../Shared/domain/Profiles/ProfileId';
 import Profile from '../../domain/Profile';
 import ProfileAge from '../../domain/ProfileAge';
 import ProfileGender from '../../domain/ProfileGender';
 import ProfileLocation from '../../domain/ProfileLocation';
 import ProfileName from '../../domain/ProfileName';
-import { ProfileRepository } from '../../domain/ProfileRepository';
+import ProfileRepository from '../../domain/ProfileRepository';
 
 type Params = {
   profileId: ProfileId;

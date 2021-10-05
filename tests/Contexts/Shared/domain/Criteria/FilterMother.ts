@@ -6,7 +6,7 @@ import FilterFieldMother from './FilterFieldMother';
 import FilterOperatorMother from './FilterOperatorMother';
 
 export default class FilterMother {
-  public static create(field?: FilterField, operator?: FilterOperator, value?: FilterValue): Filter {
+  static create(field?: FilterField, operator?: FilterOperator, value?: FilterValue): Filter {
     return new Filter(
       field ?? FilterFieldMother.create(),
       operator ?? FilterOperatorMother.create(),
@@ -14,7 +14,7 @@ export default class FilterMother {
     );
   }
 
-  public static fromValues(values: Map<string, string>): Filter {
+  static fromValues(values: Map<string, string>): Filter {
     return Filter.fromValues(values);
   }
 }

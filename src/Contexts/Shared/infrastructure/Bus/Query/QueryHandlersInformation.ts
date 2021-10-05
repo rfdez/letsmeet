@@ -22,7 +22,7 @@ export default class QueryHandlersInformation {
     return handlersMap;
   }
 
-  public search(query: Query): QueryHandler<Query, Response> {
+  search(query: Query): QueryHandler<Query, Response> {
     const queryHandler = this.queryHandlersMap.get(query.constructor);
 
     if (!queryHandler) {

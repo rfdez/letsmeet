@@ -3,8 +3,8 @@ import httpStatus from 'http-status';
 import SearchSuggestionsByCriteriaQuery from '../../../../Contexts/Recommendation/Suggestions/application/SearchByCriteria/SearchSuggestionsByCriteriaQuery';
 import SuggestionsByCriteriaResponse from '../../../../Contexts/Recommendation/Suggestions/application/SearchByCriteria/SuggestionsByCriteriaResponse';
 import Suggestion from '../../../../Contexts/Recommendation/Suggestions/domain/Suggestion';
-import { QueryBus } from '../../../../Contexts/Shared/domain/Bus/Query/QueryBus';
-import { Controller } from './Controller';
+import QueryBus from '../../../../Contexts/Shared/domain/Bus/Query/QueryBus';
+import Controller from './Controller';
 
 type FilterType = {
   value: string;

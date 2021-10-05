@@ -1,7 +1,7 @@
 import { Collection, MongoClient } from 'mongodb';
-import { AggregateRoot } from '../../../domain/Aggregate/AggregateRoot';
+import AggregateRoot from '../../../domain/Aggregate/AggregateRoot';
 
-export abstract class MongoRepository<T extends AggregateRoot> {
+export default abstract class MongoRepository<T extends AggregateRoot> {
   private readonly mongoClient: Promise<MongoClient>;
 
   constructor(mongoClient: Promise<MongoClient>) {

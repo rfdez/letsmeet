@@ -1,6 +1,6 @@
 import { Client as ElasticClient } from '@elastic/elasticsearch';
 import { ElasticConfig } from '../../../../../../src/Contexts/Shared/infrastructure/persistence/elastic/ElasticConfig';
-import { EnvironmentArranger } from '../EnvironmentArranger';
+import EnvironmentArranger from '../EnvironmentArranger';
 
 export default class ElasticEnvironmentArranger extends EnvironmentArranger {
   private readonly elasticClient: Promise<ElasticClient>;
@@ -34,5 +34,5 @@ export default class ElasticEnvironmentArranger extends EnvironmentArranger {
     return this.elasticClient;
   }
 
-  public async close(): Promise<void> {}
+  async close(): Promise<void> {}
 }

@@ -1,5 +1,5 @@
 import ProfileName from '../../../../../src/Contexts/User/Profiles/domain/ProfileName';
-import WordMother from '../../../Shared/domain/WordMother';
+import MotherCreator from '../../../Shared/domain/MotherCreator';
 
 export default class ProfileNameMother {
   static create(value: string): ProfileName {
@@ -7,6 +7,6 @@ export default class ProfileNameMother {
   }
 
   static random(): ProfileName {
-    return this.create(WordMother.random());
+    return this.create(MotherCreator.random().name.firstName());
   }
 }

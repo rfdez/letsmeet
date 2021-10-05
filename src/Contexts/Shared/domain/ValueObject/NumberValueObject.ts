@@ -1,4 +1,4 @@
-export abstract class NumberValueObject {
+export default abstract class NumberValueObject {
   readonly value: number;
 
   constructor(value: number) {
