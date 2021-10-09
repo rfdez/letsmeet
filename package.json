@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Typescript DDD test for educational purpose only.",
   "repository": {
-    "url": ""
+    "url": "https://github.com/rfdez/letsmeet"
   },
   "scripts": {
     "dev:user:backend": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules  ./src/apps/user/backend/start.ts",

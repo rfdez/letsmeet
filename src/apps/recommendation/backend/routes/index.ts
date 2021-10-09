@@ -5,7 +5,7 @@ import path from 'path';
 const registerRoutes = (router: Router) => {
   const routeFilePath = path.join(__dirname, '/**/*.route.*');
   const routes = glob.sync(routeFilePath);
-  routes.map(route => {
+  routes.forEach(route => {
     return register(route, router);
   });
 };

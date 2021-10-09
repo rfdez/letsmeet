@@ -19,12 +19,10 @@ export default class InMemorySyncEventBus implements EventBus {
 
   async publish(events: Array<DomainEvent>): Promise<void> {
     const executions: any = [];
-    // events.map(event => {
     events.forEach(event => {
       const subscribers = this.subscriptions.get(event.eventName);
       if (subscribers) {
         subscribers.forEach(subscriber => executions.push(subscriber.boundedCallback(event)));
-        // return subscribers.map(subscriber => executions.push(subscriber.boundedCallback(event)));
       }
     });
 
@@ -32,7 +30,7 @@ export default class InMemorySyncEventBus implements EventBus {
   }
 
   addSubscribers(subscribers: Array<DomainEventSubscriber<DomainEvent>>) {
-    subscribers.map(subscriber =>
+    subscribers.forEach(subscriber =>
       subscriber.subscribedTo().map(event => this.subscribe(event.EVENT_NAME!, subscriber))
     );
   }
