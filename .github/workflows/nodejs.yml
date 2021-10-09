@@ -1,7 +1,4 @@
-# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: Node.js CI
+name: CI
 
 on:
   push:
@@ -14,53 +11,14 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [ 14.x ]
-        mongodb-version: [ '5.0.3' ]
-        elasticsearch-version: [ '7.14.1' ]
-        rabbitmq-version: [ '3.9.7-management-alpine' ]
-
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-      - name: Use MongoDB ${{ matrix.mongodb-version }}
-        uses: wbari/start-mongoDB@v0.2
-        with:
-          mongoDBVersion: ${{ matrix.mongodb-version }}
-      - name: Use RabbitMQ ${{ matrix.rabbitmq-version }}
-        uses: nijel/rabbitmq-action@v1.0.0
-        with:
-          rabbitmq version: ${{ matrix.rabbitmq-version }}
-      - name: Configure sysctl limits
-        run: |
-          sudo swapoff -a
-          sudo sysctl -w vm.swappiness=1
-          sudo sysctl -w fs.file-max=262144
-          sudo sysctl -w vm.max_map_count=262144
-      - name: Use Elasticsearch ${{ matrix.elasticsearch-version }}
-        uses: getong/elasticsearch-action@v1.2
-        with:
-          elasticsearch version: ${{ matrix.elasticsearch-version }}
-          host port: 9200
-          container port: 9200
-          host node port: 9300
-          node port: 9300
-          discovery type: 'single-node'
-      - name: Add hosts
-        run: |
-          echo "127.0.0.1 mongodb elasticsearch rabbitmq" | sudo tee -a /etc/hosts
+
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
+
       - name: Install dependencies
-        run: |
-          npm install
-      - name: Build and Lint
-        run: |
-          npm run build --if-present
-          npm run lint
+        run: make deps
+
       - name: Run tests
-        run: |
-          npm run test
+        run: make test
