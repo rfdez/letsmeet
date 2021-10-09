@@ -25,7 +25,12 @@
     "test:user:backend:features": "NODE_ENV=test cucumber-js -p userBackend",
     "test:recommendation:backend:features": "NODE_ENV=test cucumber-js -p recommendationBackend"
   },
-  "keywords": [],
+  "keywords": [
+    "typescript",
+    "nodejs",
+    "testing",
+    "domain-driven design"
+  ],
   "author": "",
   "license": "ISC",
   "engines": {
