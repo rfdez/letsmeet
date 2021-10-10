@@ -35,9 +35,8 @@ export default class InMemorySyncEventBus implements EventBus {
     );
   }
 
-  setDomainEventMapping(domainEventMapping: DomainEventMapping): void {
-    console.log(domainEventMapping.constructor.name);
-  }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  setDomainEventMapping(domainEventMapping: DomainEventMapping): void {}
 
   private subscribe(topic: string, subscriber: DomainEventSubscriber<DomainEvent>): void {
     const currentSubscriptions = this.subscriptions.get(topic);

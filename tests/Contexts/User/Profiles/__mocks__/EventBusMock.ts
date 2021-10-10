@@ -12,11 +12,9 @@ export default class EventBusMock implements EventBus {
 
   async start(): Promise<void> {}
 
-  addSubscribers(subscribers: Array<DomainEventSubscriber<DomainEvent>>) {
-    console.log(subscribers.constructor.name);
-  }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  addSubscribers(subscribers: Array<DomainEventSubscriber<DomainEvent>>) {}
 
-  setDomainEventMapping(domainEventMapping: DomainEventMapping) {
-    console.log(domainEventMapping.constructor.name);
-  }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  setDomainEventMapping(domainEventMapping: DomainEventMapping) {}
 }

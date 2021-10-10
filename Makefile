@@ -21,26 +21,12 @@ ifndef DOCKER_COMPOSE
 endif
 
 .PHONY: deps
-deps: npm-install
+deps:
+	@docker-compose build $(SERVICE_NAME)
 
-# NPM
-.PHONY: npm-install
-npm-install: CMD=install
-
-.PHONY: npm-update
-npm-update: CMD=update
-
-.PHONY: npm-dep
-npm-dep: CMD=install $(package)
-
-.PHONY: npm-dev
-npm-dev: CMD=install -D $(package)
-
-.PHONY: npm-uninstall
-npm-uninstall: CMD=uninstall $(package)
-
+# Execute npm command
 .PHONY: npm
-npm npm-install npm-update npm-dep npm-dev npm-uninstall:
+npm:
 	docker-compose run --rm $(SERVICE_NAME) bash -c 'npm $(CMD)'
 
 # Build project
@@ -50,23 +36,31 @@ build:
 
 # Run tests
 .PHONY: test
-test: build
+test:
 	@docker-compose run --rm $(SERVICE_NAME) bash -c 'npm run test'
 
 .PHONY: start-all
 start-all: build
-	@docker-compose up $(USER_APP_NAME)-backend $(RECOMMENDATION_APP_NAME)-backend && \
+	@docker-compose up --build $(USER_APP_NAME)-backend $(RECOMMENDATION_APP_NAME)-backend && \
 docker-compose rm -f -s -v $(USER_APP_NAME)-backend $(RECOMMENDATION_APP_NAME)-backend
 
 # Start user backend app
 .PHONY: start-user-backend
 start-user-backend: build
-	@docker-compose up $(USER_APP_NAME)-backend && docker-compose rm -f -s -v $(USER_APP_NAME)-backend
+	@docker-compose up --build $(USER_APP_NAME)-backend && docker-compose rm -f -s -v $(USER_APP_NAME)-backend
 
 # Start recommendation backend app
 .PHONY: start-recommendation-backend
 start-recommendation-backend: build
-	@docker-compose up $(RECOMMENDATION_APP_NAME)-backend && docker-compose rm -f -s -v $(RECOMMENDATION_APP_NAME)-backend
+	@docker-compose up --build $(RECOMMENDATION_APP_NAME)-backend && \
+docker-compose rm -f -s -v $(RECOMMENDATION_APP_NAME)-backend
+
+# Copy dependencies in local
+.PHONY: local-deps
+local-deps:
+	@docker-compose up --build -d $(SERVICE_NAME)
+	@docker compose -f docker-compose.yml cp $(SERVICE_NAME):/code/node_modules .
+	@docker-compose rm -f -s $(SERVICE_NAME)
 
 # Clean workspace folders
 .PHONY: clean-workspace

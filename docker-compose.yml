@@ -9,6 +9,7 @@ x-app-service: &default-app
     - elasticsearch
   volumes:
     - .:/code:delegated
+    - node_modules:/code/node_modules:delegated
 
 services:
   app:
@@ -64,5 +65,6 @@ services:
       - '5601:5601'
 
 volumes:
+  node_modules:
   mongodb:
   elastic:

@@ -18,8 +18,8 @@ class MyQueryHandler implements QueryHandler<Query, Response> {
     return HandledQuery;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async handle(query: HandledQuery): Promise<Response> {
-    console.log(query.constructor.name);
     return {};
   }
 }

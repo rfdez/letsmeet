@@ -17,9 +17,8 @@ class MyCommandHandled implements CommandHandler<HandledCommand> {
     return HandledCommand;
   }
 
-  async handle(command: HandledCommand): Promise<void> {
-    console.log(command.constructor.name);
-  }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async handle(command: HandledCommand): Promise<void> {}
 }
 
 describe('InMemoryCommandBus', () => {
