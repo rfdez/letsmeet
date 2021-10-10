@@ -15,7 +15,8 @@ The `make` command will tell you if docker is installed in your computer.
 ### 🛫 Applications execution
 
 1. Install all dependencies with `make deps` command. It will run a docker container to install all dependencies with
-   npm.
+   npm. ⚠️Optionally, if you want to have the npm dependencies in local (for linter functionalities, for example)
+   run `make local-deps` command. It will create `node_modules` folder with all dependencies in your local directory.
 2. Now there are two applications. To run it execute `make start-all` command.
     1. [User Backend](src/apps/user/backend): http://localhost:3000/status
     2. [Recommendation Backend](src/apps/recommendation/backend): http://localhost:3001/status
